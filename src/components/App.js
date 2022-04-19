@@ -1,32 +1,9 @@
 
-// Para incluir los diferentes sets de cartas podemos _importar_ el archivo
-// JavasSript que contenga el `export` correspondiente...
-//
  import pokemon from '../data/pokemon/pokemon.js';
  import { doubleData, fisherYatesShuffle } from './double&random.js';
 
-// O alternativamente podríamos cargar el JSON de forma asíncrona usando
-// `fetch` en el momento que consideremos necesario.
-//
-// fetch('./data/pokemon/pokemon.json')
-//   .then(resp => resp.json())
-//   .then(console.log)
-//   .catch(console.error);
-//
-
-/*const App = () => {--------------------------
-  const el = document.createElement('img');
-
-  el.className = 'App';
-  el.Content = 'Hola mundo!';         EJEMPLO DE FLUJO
-
-  return el;
-};
-
-export default App;------------------------------
-*/
-
-  const pokemonContent = () => {
+//-----------------CREACIÓN DE TABLERO Y CONTENIDO---------------//
+  const pokemonContent = (principalContainer) => {
     const boardContainer = document.createElement("section");
           boardContainer.className = "boardContainer";
 
@@ -39,6 +16,8 @@ export default App;------------------------------
     //-----------------BARAJEANDO IMÁGENES---------------//
     fisherYatesShuffle(doublePokemon);
     
+    let clickedCards = [];
+    let countingCards = [];
 
     //-----------------CREANDO LAS TARJETAS---------------//
     function templeateCard(data){
@@ -58,6 +37,7 @@ export default App;------------------------------
 
 
       cardContainer.setAttribute("name", data.id);
+      backCard.setAttribute("name", data.id);
       pokemonImage.src = data.image;
       pokemonImage.alt = data.id;
 
@@ -69,50 +49,40 @@ export default App;------------------------------
       backCard.appendChild(line);
       backCard.appendChild(circle);
       
-      cardContainer.addEventListener('click', function (e){
-          backCard.classList.add("hideCardContainer");
-          //console.log(e);
-          const clickedCard = e.target;
-          clickedCard.classList.add("showed");
-          const showedCards = document.querySelectorAll(".showed");
-          //cardContainer.appendChild(showedCards);
-          //console.log(flippedCards);
-      
-          if(showedCards.length === 2){
-            if(
-              showedCards[0].getAttribute("alt") === 
-              showedCards[1].getAttribute("alt")
-            ){
-              console.log("match");
-              showedCards.forEach((card) => {
-                card.classList.remove("showed");
-                card.style.pointerEvents = "none";
-              })
-            }else{
-              console.log("wrong");
-              showedCards.forEach((card) => {
-                card.classList.remove("showed");
-                setTimeout(() => backCard.classList.remove("hideCardContainer"), 1000);
-                console.log(backCard);
-              })
-            }
+      //Definir variable para introducir las tarjetas "clickeadas"
+      //Agregar evento de "click"
+      //Detectar cuando se dé "click" en la primer carta
+      //Destapar carta 
+      //Enviarla a la variable 
+      //Hacer lo mismo para la segunda
+      //Comparar las 2 cartas dentro de la variable
+      //Si son iguales hacer que permanezcan descubiertas
+      //Y permitir destapar otras 2
+      //Si son diferentes volver a cubrir
+      //Y permitir destapar otras 2
+      //Cuando todas las tarjetas estén descubiertas lanzar aviso: ¡Felicidades!
+
+
+      backCard.addEventListener('click',()=>{
+        backCard.style.display = "none";
+        countingCards.push(frontCard);
+        console.log(frontCard);
+        clickedCards.push(backCard); 
+        
+      //----------------- COMPARANDO TARJETAS ---------------//
+        if(clickedCards.length === 2){
+          if(clickedCards[0].getAttribute("name") === clickedCards[1].getAttribute("name")){
+          }else{
+            clickedCards.forEach( (card) => {
+              setTimeout(() => card.style.display = "", 1000);
+            })
+          }
+          clickedCards = [];
+      }
           
-        };  
-      })
+      });
     }
-
- /* const hideBackCard = (card) => {
-      card.style.display = "none";
-    }
-  
-    const showedBackCard = (card) => {
-      card.style.display = "";
-    }*/
-
   doublePokemon.forEach(templeateCard);
-  //----------------- REVISANDO TARJETAS ---------------//
-  
-
 return boardContainer;
 } 
 

@@ -68,6 +68,7 @@ header{
 .cardContainer{
     width: 11vw;
     height: 22vh;
+    display: flex;
     /*background-color:  #def1ea;*/
     transform: scale(1);
 }
@@ -90,7 +91,7 @@ header{
     box-sizing: border-box;
     box-shadow: 10.1681px 10.1681px 10.1681px rgba(0, 0, 0, 0.45);
 
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 .line{
@@ -112,15 +113,17 @@ header{
     border: 2px solid #1C1A1A;
     box-sizing: border-box;
 }
-
-.hideCardContainer{
-    display: none;
+.backCard:hover{
+    border: 3px solid rgb(29, 149, 218); 
+}
+.hiddenCardContainer{
+    visibility: hidden;
 }
 
 .frontCard{
-    width: 10vw;
+    width: 9.5vw;
     height: 11.5vh;
-    margin-top: 8vh;
+    margin-top: 9vh;
     margin-left: .5%;
     -moz-border-radius: 0 0 100px 100px;
     -webkit-border-radius: 0 0 100px 100px;
@@ -136,9 +139,9 @@ header{
 .pokemonImage{
     width: 7vw;
     height: 13vh;
-    margin-top: -15%;
+    margin-top: -18%;
     position: absolute;
-    margin-left: 10%;
+    margin-left: 11%;
 }
 
 footer{
