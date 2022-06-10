@@ -18,7 +18,7 @@ header{
 
 .nameGame{
     margin-left: 65px;
-    width: 30%;
+    width: 40%;
     height: 58px;
     background: rgba(89, 167, 167, 0.58);
     border-radius: 20px 20px 0px 0px;
@@ -34,6 +34,30 @@ header{
 
     margin: 10px;
     color: #1B365C;
+}
+
+.containerButton{
+    width: 60%;
+    height: 70px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-right: 10%;
+}
+
+#button{
+    border-radius: 15px;
+    width: 100px;
+    height: 35px;
+    border: #008080;
+}
+
+span{
+    color: #1B365C;
+}
+
+#button:hover{
+    border: 3px solid rgb(29, 149, 218); 
 }
 
 .principalContainer{
@@ -69,14 +93,12 @@ header{
     width: 11vw;
     height: 22vh;
     display: flex;
-    /*background-color:  #def1ea;*/
     transform: scale(1);
 }
 
 .cardContainer:active{
     transform: scale(.95);
     transition: transform .2s;
-
 }
 
 .backCard{
@@ -90,8 +112,6 @@ header{
     border: 3.5px solid #150404;
     box-sizing: border-box;
     box-shadow: 10.1681px 10.1681px 10.1681px rgba(0, 0, 0, 0.45);
-
-    /*pointer-events: none;*/
 }
 
 .line{
@@ -113,12 +133,11 @@ header{
     border: 2px solid #1C1A1A;
     box-sizing: border-box;
 }
+
 .backCard:hover{
     border: 3px solid rgb(29, 149, 218); 
 }
-.hiddenCardContainer{
-    visibility: hidden;
-}
+
 
 .frontCard{
     width: 9.5vw;
